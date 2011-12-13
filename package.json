@@ -1,0 +1,13 @@
+{
+    "name": "fileparsers"
+  , "description": "utilities to get full (recursive) directory listing"
+  , "version": "0.0.1"
+  , "author": "Peter Host"
+  , "repository": "git@github.com:peterhost/fileparsers.git"
+  , "main": "./fileparsers.js"
+  , "private": true
+  , "dependencies": {
+        "lloging": "git+ssh://git@github.com:peterhost/lloging.git"
+  }
+  , "engine": "node >= 0.4.x"
+}
