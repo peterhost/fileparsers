@@ -26,6 +26,15 @@ var fs = require('fs'),
 
 //llog.on();// enable logging for this script/library
 
+function loginit(loglevel) {
+  if ( /normal|verbose|veryverbose/.test(loglevel) ) { llog.on(); }
+  //if (loglevel ==='verbose' ) { ... } // enable log on child module
+  //if (loglevel ==='veryverbose' ) { ... } // enable verbose log on child module
+}
+
+
+
+
 
 //_______________________________________________________________________
 //                             HELPERS
@@ -49,7 +58,6 @@ function extReg(ext) {
     var parse_ext = /[a-zA-Z0-9\/]/,
         res;
     if (ext && typeof ext === 'string' && parse_ext.test(ext)) {
-        //console.log(parse_ext.test(ext));
         res = new RegExp("[\\w\\-\\/]+\\." + ext, "g");
         return res;
     }
@@ -83,7 +91,6 @@ function matcher(strToMatch) {
         }
     };
 }
-
 
 
 //_______________________________________________________________________
@@ -196,7 +203,6 @@ function rparsef(basePath, filter, callback) {
                 valid = filter(path);
                 // push when entry validates the filter
                 if (valid) {
-                    //<!--collection.push(remainingEntries + " - " + valid);-->
                     collection.push(valid);
                     llog.l('ASYNC[' + remainingEntries + ']', "-> pushing [" + valid + "] in list");
                 }
@@ -281,6 +287,7 @@ function rparsefSYNC(basePath, filter, ignore) {
 //_______________________________________________________________________
 // Export the module's methods
 
+exports.loginit     = loginit;
 exports.rparse      = rparse;
 exports.rparsef     = rparsef;
 exports.matcher     = matcher;
